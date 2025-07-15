@@ -25,6 +25,8 @@ export default function AdminPage() {
           .select('is_admin')
           .eq('id', user.id)
           .single();
+        
+        console.log('Perfil retornado:', profile); // <-- AQUI
 
         if (profile?.is_admin) {
           setIsAdmin(true);
