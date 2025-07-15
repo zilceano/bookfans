@@ -50,7 +50,6 @@ export default function AdminPage() {
       return;
     }
 
-    // Após criar, inserir no profiles com is_admin
     const { user } = data;
     if (user) {
       const { error: insertError } = await supabase.from('profiles').insert([
@@ -68,7 +67,6 @@ export default function AdminPage() {
         setNewEmail('');
         setNewPassword('');
         setNewIsAdmin(false);
-        // Recarrega lista
         const { data: updatedUsers } = await supabase.from('profiles').select('*');
         setProfiles(updatedUsers);
       }
@@ -76,7 +74,7 @@ export default function AdminPage() {
   };
 
   if (loading) return <div>Carregando...</div>;
-  if (!isAdmin) return <div>Você não tem permissão para ver esta página.</div>;
+  if (!isAdmin) return <div>Você não tem permissão para acessar esta página.</div>;
 
   return (
     <div className="p-8 max-w-4xl mx-auto">
